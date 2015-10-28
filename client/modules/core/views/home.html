@@ -1,0 +1,69 @@
+<template name="home">
+	<div class="jumbotron welcome">
+		<div class="container">
+			<h1>Hello, world!</h1>
+			<p>Programmers way of saying hello</p>
+			
+		</div>
+	</div>
+	<div class="container latest-post">
+
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<h5>Latest Post <span class="badge">{{totalPosts}}</span></h5>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right">
+				<form class="navbar-form navbar-right searchForm" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control searchBox" placeholder="Search">
+					</div>
+				</form>
+			</div>
+		</div>
+
+		
+		<div class="row">
+			{{#each latestPosts}}
+				<div class="col-sm-6 col-md-4">
+			    <div class="thumbnail">
+
+			    	{{# if renderImage }}
+							<img src="{{renderImage.url store='medium'}} " alt="thumbnail">
+						{{ else }}
+							<img src="http://placehold.it/350x200" alt="image">
+						{{ /if }}
+			      
+			      <div class="caption">
+			        <h4><a href="{{pathFor 'articleDetails' id=_id}}">{{title}}</a></h4>
+			        <p class="posted" >Posted : <span class="grey">{{prettifyDate createdAt}}</span></p>
+			        	
+			      </div>
+			    </div>
+			  </div>
+			{{ /each }}	
+		</div>
+
+		
+		<div class="row" align="center">
+			<nav>
+			  <ul class="pagination">
+			    <li>
+			      <a href="#" class="previous {{activePrev}}" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    {{ #each pagination }}
+			    	<li><a href="#" class="gotoPage">{{page}}</a></li>
+			    {{ /each }}
+			    
+			    <li>
+			      <a href="#" class="next {{activeNext}}"  aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+			  </ul>	
+			</nav>
+		</div>
+
+	</div>
+</template>

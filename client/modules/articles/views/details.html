@@ -1,0 +1,31 @@
+<template name="articleDetails">
+	
+	<div class="container">
+		<div class="page-header">
+		  <h1>{{title}}
+		  <small class="pull-right">Posted on: {{prettifyDate createdAt}}</small>
+		  </h1>
+		</div>
+		<div class="media">
+			<a class="pull-left" href="#">
+				{{# if renderImage }}
+					<img src="{{renderImage.url store='large'}} " alt="thumbnail">
+				{{ else }}
+					<img src="http://placehold.it/350x200" alt="image">
+				{{ /if }}
+			</a>
+			<div class="media-body">
+				
+				<p>{{body}}</p>
+			</div>
+		</div>
+		<div class="page-header">
+		  <h1><small>Author: {{userName}}</small></h1>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a href="{{pathFor 'home'}}" class="btn btn-sm btn-success">back</a>
+			</div>
+		</div>
+	</div>
+</template>
